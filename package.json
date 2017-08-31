@@ -1,0 +1,15 @@
+{
+	"name": "node-vk-build-loader",
+	"version": "0.0.1",
+	"author": "Evgeny Zinoviev",
+	"description": "node-vk-build-loader",
+	"dependencies": {
+		"loader-utils": "~0.2.5"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://www.opensource.org/licenses/mit-license.php"
+		}
+	]
+}
