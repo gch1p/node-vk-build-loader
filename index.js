@@ -37,8 +37,7 @@ module.exports = function(content) {
     throw new Error("emitFile is required from module system");
   }
 
-  let query = loaderUtils.parseQuery(this.query);
-  if (query.emitFile) {
+  if (this.query.emitFile) {
     let vkModule = determineModule(this.resourcePath, this.query.vkModules)
     if (vkModule) {
       content = fs.readFileSync(getVkModulePath({
@@ -49,14 +48,14 @@ module.exports = function(content) {
       }))
     }
 
-    let url = loaderUtils.interpolateName(this, query.name || "[hash].[ext]", {
-      context: query.context || this.rootContext,
+    let url = loaderUtils.interpolateName(this, "[hash].[ext]", {
+      context: this.rootContext,
       content: content,
-      regExp: query.regExp
+      //regExp: query.regExp
     });
     this.emitFile(url, content);
 
-    let modulePath = !query.absolutePath
+    let modulePath = !this.query.absolutePath
       ? '__webpack_public_path__+' + JSON.stringify(url)
       : "require('path').join(global.__dirname, __webpack_public_path__, "+JSON.stringify(url)+")"
 
