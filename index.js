@@ -50,7 +50,7 @@ module.exports = function(content) {
     }
 
     let url = loaderUtils.interpolateName(this, query.name || "[hash].[ext]", {
-      context: query.context || this.options.context,
+      context: query.context || this.rootContext,
       content: content,
       regExp: query.regExp
     });
